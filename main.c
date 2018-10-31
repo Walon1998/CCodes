@@ -41,16 +41,16 @@ struct ccodes getccodes(reg_flags_t eflags)
 
     // Extract the carry flag from eflags such that bit 0 of ccodes.cf
     // correspond to the value of the carry flag.
-    ccodes.cf = eflags & 1;
+    ccodes.cf = eflags & 0x1;
 
     // Extract the zero flag from eflags.
-    ccodes.zf = eflags & (1<<6)>>6;
+    ccodes.zf = (eflags >> 6) & 0x1;
 
     // Extract the sign flag from eflags.
-    ccodes.sf = eflags & (1<<7)>>7;;
+    ccodes.sf = (eflags >> 7) & 0x1;
 
     // Extract the overflow flag from eflags.
-    ccodes.of = eflags & (1<<11)>>11;;
+    ccodes.of = (eflags >> 11) & 0x1;
 
     /********************************************************************
      * END EDITING
